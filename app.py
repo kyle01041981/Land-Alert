@@ -20,7 +20,8 @@ def send_email(subject, body):
 
     with smtplib.SMTP_SSL(SMTP_SERVER, 465) as server:
         server.login(SMTP_USER, SMTP_PASS)
-        server.send_message(msg)
+        server.sendmail(EMAIL_FROM, EMAIL_TO, msg.as_string())
+
 
 @app.route("/webhook", methods=["POST"])
 def webhook():
