@@ -24,10 +24,10 @@ def send_email(subject, body):
             server.sendmail(EMAIL_FROM, EMAIL_TO, msg.as_string())
 
     except Exception as e:
-        print("EMAIL ERROR:", e)
+print("EMAIL ERROR:", e)
 print("SMTP_SERVER:", SMTP_SERVER)
 print("SMTP_USER:", SMTP_USER)
- print("EMAIL_FROM:", EMAIL_FROM)
+print("EMAIL_FROM:", EMAIL_FROM)
 
         raise
 
