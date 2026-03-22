@@ -12,7 +12,6 @@ SMTP_SERVER = os.environ.get("SMTP_SERVER")
 SMTP_USER = os.environ.get("SMTP_USER")
 SMTP_PASS = os.environ.get("SMTP_PASS")
 
-
 def send_email(subject, body):
     msg = MIMEText(body)
     msg["Subject"] = subject
