@@ -4,11 +4,14 @@ from email.mime.text import MIMEText
 
 app = Flask(__name__)
 
-EMAIL_FROM = "alerts@yourdomain.com"
-EMAIL_TO = "you@yourdomain.com"
-SMTP_SERVER = "smtp.yourprovider.com"
-SMTP_USER = "smtp_user"
-SMTP_PASS = "smtp_pass"
+import os
+
+EMAIL_FROM = os.environ.get("EMAIL_FROM")
+EMAIL_TO = os.environ.get("EMAIL_TO")
+SMTP_SERVER = os.environ.get("SMTP_SERVER")
+SMTP_USER = os.environ.get("SMTP_USER")
+SMTP_PASS = os.environ.get("SMTP_PASS")
+
 
 def send_email(subject, body):
     msg = MIMEText(body)
