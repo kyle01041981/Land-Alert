@@ -13,14 +13,19 @@ SMTP_USER = os.environ.get("SMTP_USER")
 SMTP_PASS = os.environ.get("SMTP_PASS")
 
 def send_email(subject, body):
-    msg = MIMEText(body)
-    msg["Subject"] = subject
-    msg["From"] = EMAIL_FROM
-    msg["To"] = EMAIL_TO
+    try:
+        msg = MIMEText(body)
+        msg["Subject"] = subject
+        msg["From"] = EMAIL_FROM
+        msg["To"] = EMAIL_TO
 
-    with smtplib.SMTP_SSL(SMTP_SERVER, 465) as server:
-        server.login(SMTP_USER, SMTP_PASS)
-        server.sendmail(EMAIL_FROM, EMAIL_TO, msg.as_string())
+        with smtplib.SMTP_SSL(SMTP_SERVER, 465) as server:
+            server.login(SMTP_USER, SMTP_PASS)
+            server.sendmail(EMAIL_FROM, EMAIL_TO, msg.as_string())
+
+    except Exception as e:
+        print("EMAIL ERROR:", e)
+        raise
 
 
 @app.route("/webhook", methods=["POST"])
