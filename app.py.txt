@@ -6,11 +6,11 @@ app = Flask(__name__)
 
 import os
 
-EMAIL_FROM = os.environ.get("EMAIL_FROM")
-EMAIL_TO = os.environ.get("EMAIL_TO")
-SMTP_SERVER = os.environ.get("SMTP_SERVER")
-SMTP_USER = os.environ.get("SMTP_USER")
-SMTP_PASS = os.environ.get("SMTP_PASS")
+EMAIL_FROM = os.environ.get(EMAIL_FROM)
+EMAIL_TO = os.environ.get(EMAIL_TO)
+SMTP_SERVER = os.environ.get(SMTP_SERVER)
+SMTP_USER = os.environ.get(SMTP_USER)
+SMTP_PASS = os.environ.get(SMTP_PASS)
 
 
 def send_email(subject, body):
